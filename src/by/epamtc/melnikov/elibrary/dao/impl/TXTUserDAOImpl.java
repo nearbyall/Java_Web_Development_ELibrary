@@ -18,6 +18,8 @@ import by.epamtc.melnikov.elibrary.dao.exception.DAOException;
 
 public class TXTUserDAOImpl implements UserDAO {
 
+	private static final File USER_RESOURCES = new File("resources/users.txt");
+	
 	@Override
 	public boolean authorisation(String login, String password) throws DAOException {
 		
@@ -47,7 +49,7 @@ public class TXTUserDAOImpl implements UserDAO {
 	@Override
 	public void saveUsers(List<User> users) throws DAOException {
 		
-		try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File("resources/users.txt")))) {
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(USER_RESOURCES))) {
 			for (User user : users) {
 				StringBuilder sb = new StringBuilder();
 				sb.append(user.getLogin());
@@ -68,12 +70,12 @@ public class TXTUserDAOImpl implements UserDAO {
 	public List<User> readUsers() throws DAOException {
 		
 		String line;
-        List<User> users = new ArrayList<User>();
-        try (BufferedReader br = new BufferedReader(new FileReader(new File("resources/users.txt")))) {
-            while ((line = br.readLine()) != null) {
-                String[] data = line.split(StringConstants.SPLIT_BY);
+		List<User> users = new ArrayList<User>();
+        try (BufferedReader br = new BufferedReader(new FileReader(USER_RESOURCES))) {
+        	while ((line = br.readLine()) != null) {
+            	String[] data = line.split(StringConstants.SPLIT_BY);
                 User user = new UserBuilder()
-                			   .withLogin(data[0])
+                		.withLogin(data[0])
                 			   .withPassword(data[1])
                 			   .withUserType(UserType.valueOf(data[2]))
                 			   .build();   

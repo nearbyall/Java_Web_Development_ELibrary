@@ -18,6 +18,8 @@ import by.epamtc.melnikov.elibrary.dao.exception.DAOException;
 
 public class TXTStorageDAOImpl implements StorageDAO {
 
+	private static final File STORAGE_RESOURCES = new File("resources/storage.txt");
+	
 	@Override
 	public boolean isContains(Book book) throws DAOException {
 		
@@ -38,30 +40,30 @@ public class TXTStorageDAOImpl implements StorageDAO {
 	public List<Book> readBooks() throws DAOException {
 
 		String line;
-        List<Book> books = new ArrayList<Book>();
-        try (BufferedReader br = new BufferedReader(new FileReader(new File("resources/storage.txt")))) {
-            while ((line = br.readLine()) != null) {
+		List<Book> books = new ArrayList<Book>();
+		try (BufferedReader br = new BufferedReader(new FileReader(STORAGE_RESOURCES))) {
+			while ((line = br.readLine()) != null) {
 
-                String[] data = line.split(StringConstants.SPLIT_BY);
-                Book book = new BookBuilder()
-                		.withTitle(data[0])
-                		.withAuthor(data[1])
-                		.withBookSizeType(BookSizeType.valueOf(data[2]))
-                		.build();
-                books.add(book);
-            	System.out.println(book);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return books;
+				String[] data = line.split(StringConstants.SPLIT_BY);
+				Book book = new BookBuilder()
+						.withTitle(data[0])
+						.withAuthor(data[1])
+						.withBookSizeType(BookSizeType.valueOf(data[2]))
+						.build();
+				books.add(book);
+				System.out.println(book);
+			}
+		} catch (IOException e) {
+			throw new DAOException(e.getMessage(), e);
+		}
+		return books;
 		
 	}
 
 	@Override
 	public void writeBooks(List<Book> books) throws DAOException {
 		
-		try (BufferedWriter bw = new BufferedWriter(new FileWriter(new File("resources/books.txt")))) {
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(STORAGE_RESOURCES))) {
 			for (Book book : books) {
 				StringBuilder sb = new StringBuilder();
 				sb.append(book.getTitle());

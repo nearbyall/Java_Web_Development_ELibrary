@@ -10,9 +10,7 @@ public final class DAOProvider {
 	private StorageDAO storageDAO = new TXTStorageDAOImpl();
 	private UserDAO userDAO = new TXTUserDAOImpl();
 	
-	private DAOProvider() {
-		
-	}
+	private DAOProvider() {}
 	
 	public static DAOProvider getInstantce() {
 		return instance;
