@@ -12,6 +12,10 @@ public class User implements Serializable {
 	private String password;
 	private UserType userType;
 	
+	public User() {
+		
+	}
+	
 	public User(String login, String password, UserType userType) {
 		this.login = login;
 		this.password = password;
@@ -44,7 +48,7 @@ public class User implements Serializable {
 
 	@Override
 	public String toString() {
-		return getClass().getSimpleName()+ " [login=" + login + ", password=" + password + ", userType=" + userType + "]";
+		return getClass().getSimpleName() + " [login=" + login + ", password=" + password + ", userType=" + userType + "]";
 	}
 
 	@Override

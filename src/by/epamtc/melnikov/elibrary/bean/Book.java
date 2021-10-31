@@ -2,16 +2,24 @@ package by.epamtc.melnikov.elibrary.bean;
 
 import java.io.Serializable;
 
-public class Book implements Serializable {
+import by.epamtc.melnikov.elibrary.bean.type.BookSizeType;
 
-	private static final long serialVersionUID = -8837429979050850483L;
+public class Book implements Serializable {
+	
+	private static final long serialVersionUID = -27114457911218714L;
 	
 	private String title;
 	private String author;
+	private BookSizeType sizeType;
 	
-	public Book(String title, String author) {
+	public Book() {
+		
+	}
+	
+	public Book(String title, String author, BookSizeType sizeType) {
 		this.title = title;
 		this.author = author;
+		this.sizeType = sizeType;
 	}
 
 	public String getTitle() {
@@ -29,10 +37,18 @@ public class Book implements Serializable {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-	
+
+	public BookSizeType getSizeType() {
+		return sizeType;
+	}
+
+	public void setSizeType(BookSizeType sizeType) {
+		this.sizeType = sizeType;
+	}
+
 	@Override
 	public String toString() {
-		return getClass().getSimpleName() + " [title=" + title + ", author=" + author + "]";
+		return getClass().getSimpleName() + " [title=" + title + ", author=" + author + ", sizeType=" + sizeType + "]";
 	}
 
 	@Override
@@ -40,6 +56,7 @@ public class Book implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((author == null) ? 0 : author.hashCode());
+		result = prime * result + ((sizeType == null) ? 0 : sizeType.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
@@ -57,6 +74,8 @@ public class Book implements Serializable {
 			if (other.author != null)
 				return false;
 		} else if (!author.equals(other.author))
+			return false;
+		if (sizeType != other.sizeType)
 			return false;
 		if (title == null) {
 			if (other.title != null)
