@@ -71,16 +71,16 @@ public class TXTUserDAOImpl implements UserDAO {
 		
 		String line;
 		List<User> users = new ArrayList<User>();
-        try (BufferedReader br = new BufferedReader(new FileReader(USER_RESOURCES))) {
+		try (BufferedReader br = new BufferedReader(new FileReader(USER_RESOURCES))) {
         	while ((line = br.readLine()) != null) {
-            	String[] data = line.split(StringConstants.SPLIT_BY);
-                User user = new UserBuilder()
+        		String[] data = line.split(StringConstants.SPLIT_BY);
+            	User user = new UserBuilder()
                 		.withLogin(data[0])
-                			   .withPassword(data[1])
-                			   .withUserType(UserType.valueOf(data[2]))
-                			   .build();   
+                		.withPassword(data[1])
+                		.withUserType(UserType.valueOf(data[2]))
+                		.build();   
                 users.add(user);
-            }
+        	}
         } catch (IOException e) {
         	throw new DAOException(e.getMessage(), e);
         }
