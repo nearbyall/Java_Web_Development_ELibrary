@@ -12,7 +12,7 @@ import java.util.List;
 import by.epamtc.melnikov.elibrary.bean.User;
 import by.epamtc.melnikov.elibrary.bean.builder.UserBuilder;
 import by.epamtc.melnikov.elibrary.bean.type.UserType;
-import by.epamtc.melnikov.elibrary.constant.StringConstants;
+import by.epamtc.melnikov.elibrary.constant.SplitConstants;
 import by.epamtc.melnikov.elibrary.dao.UserDAO;
 import by.epamtc.melnikov.elibrary.dao.exception.DAOException;
 
@@ -73,7 +73,7 @@ public class TXTUserDAOImpl implements UserDAO {
 		List<User> users = new ArrayList<User>();
 		try (BufferedReader br = new BufferedReader(new FileReader(USER_RESOURCES))) {
 			while ((line = br.readLine()) != null) {
-				String[] data = line.split(StringConstants.SPLIT_BY);
+				String[] data = line.split(SplitConstants.SPLIT_BY);
 				User user = new UserBuilder()
 						.withLogin(data[0])
 						.withPassword(data[1])

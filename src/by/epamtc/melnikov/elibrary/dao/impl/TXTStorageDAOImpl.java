@@ -12,7 +12,7 @@ import java.util.List;
 import by.epamtc.melnikov.elibrary.bean.Book;
 import by.epamtc.melnikov.elibrary.bean.builder.BookBuilder;
 import by.epamtc.melnikov.elibrary.bean.type.BookSizeType;
-import by.epamtc.melnikov.elibrary.constant.StringConstants;
+import by.epamtc.melnikov.elibrary.constant.SplitConstants;
 import by.epamtc.melnikov.elibrary.dao.StorageDAO;
 import by.epamtc.melnikov.elibrary.dao.exception.DAOException;
 
@@ -28,7 +28,7 @@ public class TXTStorageDAOImpl implements StorageDAO {
 		try (BufferedReader br = new BufferedReader(new FileReader(STORAGE_RESOURCES))) {
 			while ((line = br.readLine()) != null) {
 
-				String[] data = line.split(StringConstants.SPLIT_BY);
+				String[] data = line.split(SplitConstants.SPLIT_BY);
 				Book book = new BookBuilder()
 						.withTitle(data[0])
 						.withAuthor(data[1])
