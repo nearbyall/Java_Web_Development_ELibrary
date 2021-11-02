@@ -64,4 +64,30 @@ public class TXTStorageDAOImpl implements StorageDAO {
 		
 	}
 
+	@Override
+	public void addBook(Book newBook) throws DAOException {
+		
+		List<Book> books = readBooks();
+		
+		books.add(newBook);
+		
+		writeBooks(books);
+		
+	}
+
+	@Override
+	public void deleteBook(Book uselessBook) throws DAOException {
+		
+		List<Book> books = readBooks();
+		
+		for (Book book : books) {
+			if (book.equals(uselessBook)) {
+				books.remove(book);
+			}
+		}
+		
+		writeBooks(books);
+		
+	}
+
 }

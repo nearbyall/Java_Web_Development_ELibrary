@@ -11,4 +11,8 @@ public interface StorageDAO {
 	
 	void writeBooks(List<Book> books) throws DAOException;
 	
+	void addBook(Book newBook) throws DAOException;
+	
+	void deleteBook(Book uselessBook) throws DAOException;
+	
 }
