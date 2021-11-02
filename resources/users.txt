@@ -1,2 +1,2 @@
-Vladislav,rbceyzvty,ADMIN
-Yarik,cfvjcdfk,USER
+Vladislav2003,9567441bb6076cf39f16553bb7b376e,ADMIN
+Yarik1337,1e195c9effa5473d71519e59c1df838,USER
