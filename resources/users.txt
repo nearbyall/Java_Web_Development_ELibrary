@@ -1,2 +1,2 @@
 Vladislav,rbceyzvty,ADMIN
-YARik,cfvjcdfk,USER
+Yarik,cfvjcdfk,USER
