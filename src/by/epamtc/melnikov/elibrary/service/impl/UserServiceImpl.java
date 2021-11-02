@@ -62,7 +62,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public String roleCheck(String login) throws ServiceException {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
