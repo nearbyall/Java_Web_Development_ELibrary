@@ -20,6 +20,12 @@ public class StorageServiceImpl implements StorageService {
 	}
 
 	@Override
+	public String makeStorageList() throws ServiceException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
 	public boolean addBook(String title, String author, BookSizeType sizeType) throws ServiceException {
 		// TODO Auto-generated method stub
 		return false;
