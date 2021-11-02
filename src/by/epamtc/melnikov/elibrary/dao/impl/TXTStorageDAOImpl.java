@@ -19,22 +19,6 @@ import by.epamtc.melnikov.elibrary.dao.exception.DAOException;
 public class TXTStorageDAOImpl implements StorageDAO {
 
 	private static final File STORAGE_RESOURCES = new File("resources/storage.txt");
-	
-	@Override
-	public boolean isContains(Book book) throws DAOException {
-		
-		List<Book> books = readBooks();
-		
-		for (Book thisbook : books) {
-			if (thisbook.getTitle().equals(book.getTitle()) && thisbook.getAuthor().equals(book.getTitle()) &&
-					thisbook.getSizeType().equals(book.getSizeType())) {
-				return true;
-			}
-		}
-		
-		return false;
-		
-	}
 
 	@Override
 	public List<Book> readBooks() throws DAOException {
