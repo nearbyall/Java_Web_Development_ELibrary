@@ -1,8 +1,8 @@
 package by.epamtc.melnikov.elibrary.constant;
 
-public final class StringConstants {
+public final class SplitConstants {
 
-	private StringConstants() {}
+	private SplitConstants() {}
 	
 	public static final String SPLIT_BY = ",";
 	
