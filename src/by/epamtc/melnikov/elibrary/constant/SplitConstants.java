@@ -4,6 +4,6 @@ public final class SplitConstants {
 
 	private SplitConstants() {}
 	
-	public static final String SPLIT_BY = ",";
-	
+	public final static String SPLIT_BY = ",";
+
 }
