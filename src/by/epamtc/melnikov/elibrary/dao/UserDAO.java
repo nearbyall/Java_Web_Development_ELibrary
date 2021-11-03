@@ -7,7 +7,7 @@ import by.epamtc.melnikov.elibrary.dao.exception.DAOException;
 
 public interface UserDAO {
 
-	User authorisation(String login, String password) throws DAOException;
+	User authorization(String login, String password) throws DAOException;
 	
 	void registration(User newUser) throws DAOException;
 	

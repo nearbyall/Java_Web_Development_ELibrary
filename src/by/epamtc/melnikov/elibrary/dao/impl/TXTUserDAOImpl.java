@@ -21,7 +21,7 @@ public class TXTUserDAOImpl implements UserDAO {
 	private static final File USER_RESOURCES = new File("resources/users.txt");
 	
 	@Override
-	public User authorisation(String login, String password) throws DAOException {
+	public User authorization(String login, String password) throws DAOException {
 		
 		List<User> users = readUsers();
 		
@@ -39,6 +39,10 @@ public class TXTUserDAOImpl implements UserDAO {
 	public void registration(User newUser) throws DAOException {
 		
 		List<User> users = readUsers();
+		
+		if (users.contains(newUser)) {
+			throw new DAOException("User is already exist");
+		}
 		
 		users.add(newUser);
 		
