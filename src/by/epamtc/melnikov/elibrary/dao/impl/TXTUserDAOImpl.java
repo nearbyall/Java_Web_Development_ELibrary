@@ -21,17 +21,17 @@ public class TXTUserDAOImpl implements UserDAO {
 	private static final File USER_RESOURCES = new File("resources/users.txt");
 	
 	@Override
-	public boolean authorisation(String login, String password) throws DAOException {
+	public User authorisation(String login, String password) throws DAOException {
 		
 		List<User> users = readUsers();
 		
 		for (User user : users) {
 			if (user.getLogin().equals(login) && user.getPassword().equals(password)) {
-				return true;
+				return user;
 			}
 		}
 		
-		return false;
+		return null;
 		
 	}
 
