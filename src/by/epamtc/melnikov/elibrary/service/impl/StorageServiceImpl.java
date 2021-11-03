@@ -139,4 +139,27 @@ public class StorageServiceImpl implements StorageService {
 		
 	}
 
+	@Override
+	public void correctBook(Book correctBook, Book uncorrectBook) throws ServiceException {
+		
+		DAOProvider provider = DAOProvider.getInstantce();
+		StorageDAO storageDAO = provider.getStorageDAO();
+		
+		List<Book> storage;
+		
+		try {
+			storage = storageDAO.readBooks();
+		} catch (DAOException e) {
+			throw new ServiceException("");
+		}
+		
+		if (storage.contains(uncorrectBook)) {
+			storage.set(storage.indexOf(uncorrectBook), correctBook);
+		} else {
+			throw new ServiceException("");
+		}
+		
+	}
+
+
 }

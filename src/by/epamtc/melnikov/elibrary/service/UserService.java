@@ -5,7 +5,7 @@ import by.epamtc.melnikov.elibrary.service.exception.ServiceException;
 
 public interface UserService {
 
-	User authorisation(String login, String password) throws ServiceException;
+	User authorization(String login, String password) throws ServiceException;
 	
 	void registration(String login, String password, String userTypeString) throws ServiceException;
 	

@@ -14,7 +14,7 @@ import by.epamtc.melnikov.elibrary.service.validation.UserValidation;
 public class UserServiceImpl implements UserService {
 
 	@Override
-	public User authorisation(String login, String password) throws ServiceException {
+	public User authorization(String login, String password) throws ServiceException {
 	
 		if (!UserValidation.validateLogin(login) || !UserValidation.validatePassword(password)) {
 			throw new ServiceException();
@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
 		User user = null; 
 		
 		try {
-			user = userDAO.authorisation(login, MD5PasswordEncryption.encryptPasswordWithMD5(password));
+			user = userDAO.authorization(login, MD5PasswordEncryption.encryptPasswordWithMD5(password));
 		} catch (DAOException e) {
 			throw new ServiceException("");
 		}

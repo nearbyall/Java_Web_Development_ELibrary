@@ -17,4 +17,6 @@ public interface StorageService {
 	
 	void deleteBook(String title, String author, String sizeTypeString) throws ServiceException;
 	
+	void correctBook(Book correctBook, Book uncorrectBook) throws ServiceException;
+	
 }

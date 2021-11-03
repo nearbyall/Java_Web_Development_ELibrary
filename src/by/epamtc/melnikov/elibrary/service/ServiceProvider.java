@@ -12,7 +12,7 @@ public class ServiceProvider {
 	
 	private ServiceProvider() {}
 	
-	public ServiceProvider getInstance() {
+	public static ServiceProvider getInstance() {
 		return instance;
 	}
 
