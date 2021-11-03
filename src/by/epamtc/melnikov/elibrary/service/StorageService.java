@@ -13,8 +13,8 @@ public interface StorageService {
 	
 	List<Book> storageList() throws ServiceException;
 	
-	boolean addBook(String title, String author, String sizeTypeString) throws ServiceException;
+	void addBook(String title, String author, String sizeTypeString) throws ServiceException;
 	
-	boolean deleteBook(String title, String author, String sizeTypeString) throws ServiceException;
+	void deleteBook(String title, String author, String sizeTypeString) throws ServiceException;
 	
 }

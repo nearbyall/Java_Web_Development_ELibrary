@@ -14,24 +14,24 @@ import by.epamtc.melnikov.elibrary.service.validation.UserValidation;
 public class UserServiceImpl implements UserService {
 
 	@Override
-	public boolean authorisation(String login, String password) throws ServiceException {
+	public User authorisation(String login, String password) throws ServiceException {
 	
 		if (!UserValidation.validateLogin(login) || !UserValidation.validatePassword(password)) {
-			return false;
+			throw new ServiceException();
 		}
 		
 		DAOProvider provider = DAOProvider.getInstantce();
 		UserDAO userDAO = provider.getUserDAO();
 		
-		boolean result; 
+		User user = null; 
 		
 		try {
-			result = userDAO.authorisation(login, MD5PasswordEncryption.encryptPasswordWithMD5(password));
+			user = userDAO.authorisation(login, MD5PasswordEncryption.encryptPasswordWithMD5(password));
 		} catch (DAOException e) {
-			throw new ServiceException(e.getMessage(), e);
+			throw new ServiceException("");
 		}
 		
-		return result;
+		return user;
 		
 	}
 
@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
 
 		if (!UserValidation.validateLogin(login) || !UserValidation.validatePassword(password)
 				|| !UserValidation.validateUserTypeString(userTypeString)) {
-			throw new ServiceException();
+			throw new ServiceException("");
 		}
 		
 		DAOProvider provider = DAOProvider.getInstantce();
@@ -55,15 +55,9 @@ public class UserServiceImpl implements UserService {
 		try {
 			userDAO.registration(newUser);
 		} catch (DAOException e) {
-			throw new ServiceException();
+			throw new ServiceException("");
 		}
 		
-	}
-
-	@Override
-	public String roleCheck(String login) throws ServiceException {
-
-		return null;
 	}
 
 }

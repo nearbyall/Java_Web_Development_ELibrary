@@ -19,7 +19,7 @@ public class StorageServiceImpl implements StorageService {
 	public List<Book> findBooks(String title) throws ServiceException {
 		
 		if (!StorageValidation.validateTitle(title)) {
-			return null;
+			throw new ServiceException("");
 		}
 		
 		DAOProvider provider = DAOProvider.getInstantce();
@@ -31,7 +31,7 @@ public class StorageServiceImpl implements StorageService {
 		try {
 			storage = storageDAO.readBooks();
 		} catch (DAOException e) {
-			throw new ServiceException(e.getMessage(), e);
+			throw new ServiceException("");
 		}
 		
 		for (Book book : storage) {
@@ -48,7 +48,7 @@ public class StorageServiceImpl implements StorageService {
 	public List<Book> findBooks(String title, String author) throws ServiceException {
 		
 		if (!StorageValidation.validateTitle(title)) {
-			return null;
+			throw new ServiceException("");
 		}
 		
 		DAOProvider provider = DAOProvider.getInstantce();
@@ -60,7 +60,7 @@ public class StorageServiceImpl implements StorageService {
 		try {
 			storage = storageDAO.readBooks();
 		} catch (DAOException e) {
-			throw new ServiceException(e.getMessage(), e);
+			throw new ServiceException("");
 		}
 		
 		for (Book book : storage) {
@@ -83,18 +83,18 @@ public class StorageServiceImpl implements StorageService {
 		try {
 			books = storageDAO.readBooks();
 		} catch (DAOException e) {
-			throw new ServiceException(e.getMessage(), e);
+			throw new ServiceException("");
 		}
 		
 		return books;
 	}
 	
 	@Override
-	public boolean addBook(String title, String author, String sizeTypeString) throws ServiceException {
+	public void addBook(String title, String author, String sizeTypeString) throws ServiceException {
 		
 		if (!StorageValidation.validateAuthor(author) || !StorageValidation.validateTitle(title)
 				|| !StorageValidation.validateSizeTypeString(sizeTypeString)) {
-			return false;
+			throw new ServiceException("");
 		}
 		
 		DAOProvider provider = DAOProvider.getInstantce();
@@ -109,18 +109,17 @@ public class StorageServiceImpl implements StorageService {
 		try {
 			storageDAO.addBook(newBook);
 		} catch (DAOException e) {
-			throw new ServiceException(e.getMessage(), e);
+			throw new ServiceException("");
 		}
 		
-		return true;
 	}
 
 	@Override
-	public boolean deleteBook(String title, String author, String sizeTypeString) throws ServiceException {
+	public void deleteBook(String title, String author, String sizeTypeString) throws ServiceException {
 		
 		if (!StorageValidation.validateAuthor(author) || !StorageValidation.validateTitle(title)
 				|| !StorageValidation.validateSizeTypeString(sizeTypeString)) {
-			return false;
+			throw new ServiceException("");
 		}
 		
 		DAOProvider provider = DAOProvider.getInstantce();
@@ -135,10 +134,8 @@ public class StorageServiceImpl implements StorageService {
 		try {
 			storageDAO.deleteBook(uselessBook);
 		} catch (DAOException e) {
-			throw new ServiceException(e.getMessage(), e);
+			throw new ServiceException("");
 		}
-		
-		return true;
 		
 	}
 
