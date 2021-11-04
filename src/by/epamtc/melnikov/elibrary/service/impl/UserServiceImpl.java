@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService {
 	public User authorization(String login, String password) throws ServiceException {
 	
 		if (!UserValidation.validateLogin(login) || !UserValidation.validatePassword(password)) {
-			throw new ServiceException();
+			throw new ServiceException("Data not validated");
 		}
 		
 		DAOProvider provider = DAOProvider.getInstantce();
@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
 		try {
 			user = userDAO.authorization(login, MD5PasswordEncryption.encryptPasswordWithMD5(password));
 		} catch (DAOException e) {
-			throw new ServiceException("");
+			throw new ServiceException("Exception occurred during authorization");
 		}
 		
 		return user;
@@ -40,7 +40,7 @@ public class UserServiceImpl implements UserService {
 
 		if (!UserValidation.validateLogin(login) || !UserValidation.validatePassword(password)
 				|| !UserValidation.validateUserTypeString(userTypeString)) {
-			throw new ServiceException("");
+			throw new ServiceException("Data not validated");
 		}
 		
 		DAOProvider provider = DAOProvider.getInstantce();
@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
 		try {
 			userDAO.registration(newUser);
 		} catch (DAOException e) {
-			throw new ServiceException("");
+			throw new ServiceException("User is already exist");
 		}
 		
 	}
