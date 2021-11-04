@@ -7,7 +7,6 @@ public enum CommandName {
 	DELETE_BOOK("Удалить книгу"),
 	CORRECT_NOTE("Редактировать запись"),
 	SHOW_BOOKS("Вывести каталог книг"),
-	FIND_BOOKS_BY_SIZE_TYPE("Найти книги по размеру"),
 	FIND_BOOKS_BY_TITLE("Найти книги по названию"),
 	FIND_BOOKS_BY_TITLE_AND_AUTHOR("Найти книги по названию и автору"),
 	WRONG_REQUEST("Неверная команда");
