@@ -2,9 +2,9 @@ package by.epamtc.melnikov.elibrary.bean.type;
 
 public enum BookSizeType {
 	
-	LONG("Длинная"),
-	MIDDLE("Средняя"),
-	SHORT("Короткая");
+	LONG("Long"),
+	MIDDLE("Middle"),
+	SHORT("Short");
 	
 	private final String value;
 	

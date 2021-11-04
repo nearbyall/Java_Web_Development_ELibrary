@@ -63,6 +63,7 @@ public class Book implements Serializable {
 
 	@Override
 	public boolean equals(Object obj) {
+		
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -83,6 +84,7 @@ public class Book implements Serializable {
 		} else if (!title.equals(other.title))
 			return false;
 		return true;
+		
 	}
 	
 }

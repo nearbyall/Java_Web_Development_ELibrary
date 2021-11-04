@@ -2,8 +2,8 @@ package by.epamtc.melnikov.elibrary.bean.type;
 
 public enum UserType {
 	
-	ADMIN("Администратор"),
-	USER("Пользователь");
+	ADMIN("Admin"),
+	USER("User");
 	
 	private final String value;
 	
