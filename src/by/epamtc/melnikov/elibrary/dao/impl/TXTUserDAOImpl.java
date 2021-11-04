@@ -65,7 +65,7 @@ public class TXTUserDAOImpl implements UserDAO {
 				bw.newLine();
 			}
 		} catch (IOException e) {
-			throw new DAOException(e.getMessage(), e);
+			throw new DAOException("Failed to save users");
 		}
 
 	}
@@ -86,7 +86,7 @@ public class TXTUserDAOImpl implements UserDAO {
 				users.add(user);
 			}
 		} catch (IOException e) {
-			throw new DAOException(e.getMessage(), e);
+			throw new DAOException("Failed to read users");
 		}
 		return users;
 		

@@ -35,10 +35,10 @@ public class TXTStorageDAOImpl implements StorageDAO {
 						.withBookSizeType(BookSizeType.valueOf(data[2]))
 						.build();
 				books.add(book);
-				System.out.println(book);
+
 			}
 		} catch (IOException e) {
-			throw new DAOException(e.getMessage(), e);
+			throw new DAOException("Failed to read storage");
 		}
 		return books;
 		
@@ -59,7 +59,7 @@ public class TXTStorageDAOImpl implements StorageDAO {
 				bw.newLine();
 			}
 		} catch (IOException e) {
-			throw new DAOException(e.getMessage(), e);
+			throw new DAOException("Failed to write storage");
 		}
 		
 	}
