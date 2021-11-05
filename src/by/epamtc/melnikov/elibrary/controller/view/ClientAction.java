@@ -157,28 +157,62 @@ public final class ClientAction {
 		System.out.println(response);
 		
 	}
-	
-	private static void correctNoteProcessing() {
-		
-		
-		
-	}
-	
+
 	private static void showBooksProcessing() {
 		
+		String response = controller.executeTask("SHOW_BOOKS,");
 		
+		System.out.println(response);
 		
 	}
 	
 	private static void findBooksByTitleProcessing() {
 		
+		System.out.println(MenuConstants.ENTER_BOOK_TITLE);
+		String title = ClientInput.enterString();
 		
+		String response = controller.executeTask("FIND_BOOKS_BY_TITLE," + title);
+		
+		System.out.println(response);
 		
 	}
 	
 	private static void findBooksByTitleAndAuthorProcessing() {
 		
+		System.out.println(MenuConstants.ENTER_BOOK_TITLE);
+		String title = ClientInput.enterString();
+		System.out.println(MenuConstants.ENTER_BOOK_AUTHOR);
+		String author = ClientInput.enterString();
 		
+		String response = controller.executeTask("FIND_BOOKS_BY_TITLE_AND_AUTHOR," + title + "," + author);
+		
+		System.out.println(response);
+		
+	}
+	
+	
+	private static void correctNoteProcessing() {
+		
+		System.out.println(MenuConstants.ENTER_UNCORRECT_BOOK);
+		System.out.println(MenuConstants.ENTER_BOOK_TITLE);
+		String uncorrectTitle = ClientInput.enterString();
+		System.out.println(MenuConstants.ENTER_BOOK_AUTHOR);
+		String uncorrectAuthor = ClientInput.enterString();
+		System.out.println(MenuConstants.ENTER_BOOK_SIZE_TYPE);
+		String uncorrectSizeTypeString = ClientInput.enterString();
+		
+		System.out.println(MenuConstants.ENTER_CORRECT_BOOK);
+		System.out.println(MenuConstants.ENTER_BOOK_TITLE);
+		String correctTitle = ClientInput.enterString();
+		System.out.println(MenuConstants.ENTER_BOOK_AUTHOR);
+		String correctAuthor = ClientInput.enterString();
+		System.out.println(MenuConstants.ENTER_BOOK_SIZE_TYPE);
+		String correctSizeTypeString = ClientInput.enterString();
+		
+		String response = controller.executeTask("CORRECT_NOTE," + uncorrectTitle + "," + uncorrectAuthor + ","
+				+ uncorrectSizeTypeString + "," + correctTitle + "," + correctAuthor + "," + correctSizeTypeString);
+		
+		System.out.println(response);
 		
 	}
 	
