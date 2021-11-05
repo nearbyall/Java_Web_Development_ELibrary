@@ -1,5 +1,6 @@
 package by.epamtc.melnikov.elibrary.controller.command.impl;
 
+import by.epamtc.melnikov.elibrary.constant.ResponseConstants;
 import by.epamtc.melnikov.elibrary.constant.SplitConstants;
 import by.epamtc.melnikov.elibrary.controller.command.Command;
 import by.epamtc.melnikov.elibrary.service.ServiceProvider;
@@ -20,13 +21,16 @@ public class Registration implements Command {
 		ServiceProvider provider = ServiceProvider.getInstance();
 		UserService userService = provider.getUserService();
 		
+		String response;
+		
 		try {
 			userService.registration(login, password, userTypeString);
+			response = ResponseConstants.REGISTRATION_SUCCESS;
 		} catch (ServiceException e) {
-			//Обработать
+			response = ResponseConstants.REGISTRATION_FAILED;
 		}
 		
-		return "User registered";
+		return response;
 		
 	}
 

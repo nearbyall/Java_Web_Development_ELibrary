@@ -1,5 +1,6 @@
 package by.epamtc.melnikov.elibrary.controller.command.impl;
 
+import by.epamtc.melnikov.elibrary.constant.ResponseConstants;
 import by.epamtc.melnikov.elibrary.constant.SplitConstants;
 import by.epamtc.melnikov.elibrary.controller.command.Command;
 import by.epamtc.melnikov.elibrary.service.ServiceProvider;
@@ -20,13 +21,16 @@ public class DeleteBook implements Command {
 		ServiceProvider provider = ServiceProvider.getInstance();
 		StorageService storageService = provider.getStorageService();
 		
+		String response;
+		
 		try {
 			storageService.deleteBook(title, author, sizeTypeString);
+			response = ResponseConstants.DELETE_BOOK_SUCCESS;
 		} catch (ServiceException e) {
-			//ОБработать
+			response = ResponseConstants.DELETE_BOOK_FAIL;
 		}
 		
-		return "Book deleted";
+		return response;
 		
 	}
 
