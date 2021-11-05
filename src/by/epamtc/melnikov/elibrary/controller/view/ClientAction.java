@@ -14,7 +14,7 @@ public final class ClientAction {
 		
 		System.out.println(MenuConstants.WELCOME);
 		
-		while(!authorization()) {
+		while(!authorizationProcessing()) {
 			System.out.println(ResponseConstants.AUTHORIZATION_FAIL);
 		}
 		
@@ -26,16 +26,15 @@ public final class ClientAction {
 			
 			if (userType == UserType.ADMIN) {
 				option = ClientInput.enterAdminMenuChoise();
-				adminOptionProccesing(option);
+				adminOptionProcessing(option);
 			} else {
 				option = ClientInput.enterUserMenuChoise();
-				userOptionProccesing(option);
+				userOptionProcessing(option);
 			}
 			
 			if (option == 0) {
 				break;
 			}
-			
 		}	
 		
 	}
@@ -50,7 +49,51 @@ public final class ClientAction {
 		
 	}
 	
-	private static boolean authorization() {
+	private static void userOptionProcessing(int option) {
+
+		switch (option) {
+			case 1:
+				showBooksProcessing();
+				break;
+			case 2:
+				findBooksByTitleProcessing();
+				break;	
+			case 3:
+				findBooksByTitleAndAuthorProcessing();
+				break;	
+		}
+		
+	}
+		
+	private static void adminOptionProcessing(int option) {
+		
+		switch (option) {
+		case 1:
+			addBookProcessing();
+			break;
+		case 2:
+			deleteBookProcessing();
+			break;	
+		case 3:
+			correctNoteProcessing();
+			break;	
+		case 4:
+			showBooksProcessing();
+			break;
+		case 5:
+			findBooksByTitleProcessing();
+			break;	
+		case 6:
+			findBooksByTitleAndAuthorProcessing();
+			break;	
+		case 7:
+			registrationProcessing();
+			break;
+		}
+		
+	}
+
+	private static boolean authorizationProcessing() {
 		
 		System.out.println(MenuConstants.ENTER_LOGIN);
 		String login = ClientInput.enterString();
@@ -68,13 +111,75 @@ public final class ClientAction {
 		return true;
 		
 	}
+	
+	private static void registrationProcessing() {
 		
-	private static void userOptionProccesing(int iption) {
+		System.out.println(MenuConstants.ENTER_LOGIN);
+		String login = ClientInput.enterString();
+		System.out.println(MenuConstants.ENTER_PASSWORD);
+		String password = ClientInput.enterString();
+		System.out.println(MenuConstants.ENTER_USER_TYPE);
+		String userTypeString = ClientInput.enterString();
 		
-	}
+		String response = controller.executeTask("REGISTRATION," + login + "," + password + "," + userTypeString);
 		
-	private static void adminOptionProccesing(int iption) {
+		System.out.println(response);
 		
 	}
 
+	private static void addBookProcessing() {
+		
+		System.out.println(MenuConstants.ENTER_BOOK_TITLE);
+		String title = ClientInput.enterString();
+		System.out.println(MenuConstants.ENTER_BOOK_AUTHOR);
+		String author = ClientInput.enterString();
+		System.out.println(MenuConstants.ENTER_BOOK_SIZE_TYPE);
+		String sizeTypeString = ClientInput.enterString();
+		
+		String response = controller.executeTask("ADD_BOOK," + title + "," + author + "," + sizeTypeString);
+		
+		System.out.println(response);
+		
+		
+	}
+	
+	private static void deleteBookProcessing() {
+	
+		System.out.println(MenuConstants.ENTER_BOOK_TITLE);
+		String title = ClientInput.enterString();
+		System.out.println(MenuConstants.ENTER_BOOK_AUTHOR);
+		String author = ClientInput.enterString();
+		System.out.println(MenuConstants.ENTER_BOOK_SIZE_TYPE);
+		String sizeTypeString = ClientInput.enterString();
+		
+		String response = controller.executeTask("DELETE_BOOK," + title + "," + author + "," + sizeTypeString);
+		
+		System.out.println(response);
+		
+	}
+	
+	private static void correctNoteProcessing() {
+		
+		
+		
+	}
+	
+	private static void showBooksProcessing() {
+		
+		
+		
+	}
+	
+	private static void findBooksByTitleProcessing() {
+		
+		
+		
+	}
+	
+	private static void findBooksByTitleAndAuthorProcessing() {
+		
+		
+		
+	}
+	
 }

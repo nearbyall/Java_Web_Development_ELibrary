@@ -64,7 +64,7 @@ public class ClientInput {
 		
 		do {
 			value = enterInteger();
-		} while (value < 0 || value > 6);
+		} while (value < 0 || value > 7);
 		
 		return value;
 		
