@@ -3,11 +3,13 @@ package by.epamtc.melnikov.elibrary.service.encryption;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import by.epamtc.melnikov.elibrary.service.exception.ServiceException;
+
 public final class MD5PasswordEncryption {
 
 	private MD5PasswordEncryption() {}
 	
-	public static String encryptPasswordWithMD5(String password) {
+	public static String encryptPasswordWithMD5(String password) throws ServiceException {
 		
 		try {
 			MessageDigest md;
@@ -21,9 +23,8 @@ public final class MD5PasswordEncryption {
 			}
 			return sb.toString();
 		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
+			throw new ServiceException("Encryption was not successfull");
 		}
-		return null;
 		
 	}
 	
