@@ -1,6 +1,7 @@
 package by.epamtc.melnikov.elibrary.controller.command.impl;
 
 import by.epamtc.melnikov.elibrary.bean.User;
+import by.epamtc.melnikov.elibrary.constant.ResponseConstants;
 import by.epamtc.melnikov.elibrary.constant.SplitConstants;
 import by.epamtc.melnikov.elibrary.controller.CurrentUser;
 import by.epamtc.melnikov.elibrary.controller.command.Command;
@@ -23,16 +24,15 @@ public class Authorization implements Command {
 		UserService userService = provider.getUserService();
 		
 		User currentUser = null;
+		String response = null;
 		
 		try {
 			currentUser = userService.authorization(login, password);
+			response = UserActionViewer.authorizationAnswer(currentUser);
+			CurrentUser.setCurrentUser(currentUser);
 		} catch (ServiceException e) {
-			//Обработать
+			response = ResponseConstants.AUTHORIZATION_FAIL;
 		}
-		
-		CurrentUser.setCurrentUser(currentUser);
-		
-		String response = UserActionViewer.authorizationAnswer(currentUser);
 		
 		return response;
 		
