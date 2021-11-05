@@ -18,6 +18,10 @@ public final class MenuConstants {
 	
 	public final static String ENTER_BOOK_SIZE_TYPE = "\nEnter book size type(LONG,MIDDLE or SHORT)";
 	
+	public final static String ENTER_UNCORRECT_BOOK = "\nEnter uncorrect book fields";
+	
+	public final static String ENTER_CORRECT_BOOK = "\nEnter correct book fields";
+	
 	public final static String USER_MENU = "\n1. Show books"
 			+ "\n2. Find books by title"
 			+ "\n3. Find books by title and author"

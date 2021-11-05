@@ -20,4 +20,10 @@ public final class ResponseConstants {
 	
 	public final static String DELETE_BOOK_FAIL = "Book has not been deleted";
 	
+	public final static String FIND_FAILED = "Books has not been finded";
+	
+	public final static String CORRECT_SUCCESS = "Book was corrected";
+	
+	public final static String CORRECT_FAILED = "Book has not been corrected";
+	
 }
