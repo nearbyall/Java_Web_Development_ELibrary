@@ -10,7 +10,13 @@ public final class MenuConstants {
 	
 	public final static String ENTER_PASSWORD = "\nEnter password";
 	
-	public final static String AUTHORIZATION_SUCCES = "\nAuthorization was successful";
+	public final static String ENTER_USER_TYPE = "\nEnter user type(ADMIN or USER)";
+	
+	public final static String ENTER_BOOK_TITLE = "\nEnter book title";
+	
+	public final static String ENTER_BOOK_AUTHOR = "\nEnter book author";
+	
+	public final static String ENTER_BOOK_SIZE_TYPE = "\nEnter book size type(LONG,MIDDLE or SHORT)";
 	
 	public final static String USER_MENU = "\n1. Show books"
 			+ "\n2. Find books by title"
@@ -23,6 +29,7 @@ public final class MenuConstants {
 			+ "\n4. Show books"
 			+ "\n5. Find books by title"
 			+ "\n6. Find books by title and author"
+			+ "\n7. Add new user"
 			+ "\n0. Exit";
 																	
 	
