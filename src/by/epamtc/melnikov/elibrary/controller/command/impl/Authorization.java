@@ -29,7 +29,7 @@ public class Authorization implements Command {
 		try {
 			currentUser = userService.authorization(login, password);
 			response = UserActionViewer.authorizationAnswer(currentUser);
-			CurrentUser.setCurrentUser(currentUser);
+			CurrentUser.currentUser = currentUser;
 		} catch (ServiceException e) {
 			response = ResponseConstants.AUTHORIZATION_FAIL;
 		}

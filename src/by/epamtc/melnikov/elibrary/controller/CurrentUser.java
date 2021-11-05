@@ -4,12 +4,8 @@ import by.epamtc.melnikov.elibrary.bean.User;
 
 public final class CurrentUser {
 
-	public static User currentUser = null;
+	public static User currentUser;
 	
 	private CurrentUser() {};
-	
-	public static void setCurrentUser(User user) {
-		currentUser = user;
-	}
 	
 }
