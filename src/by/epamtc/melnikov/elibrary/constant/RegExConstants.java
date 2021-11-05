@@ -18,6 +18,7 @@ public final class RegExConstants {
 	
 	/*
 	 *  Name of the author of the format First name Surname (Latin and Cyrillic)
+	 *  ^([À-ß]{1}[à-ÿ¸]{1,23}|[A-Z]{1}[a-z]{1,23})$
 	 */
 	public static String AUTHOR = "^([À-ß]{1}[à-ÿ¸]{1,23}|[A-Z]{1}[a-z]{1,23})$";
 	
