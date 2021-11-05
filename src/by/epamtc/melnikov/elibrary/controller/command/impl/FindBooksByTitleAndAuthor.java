@@ -3,6 +3,7 @@ package by.epamtc.melnikov.elibrary.controller.command.impl;
 import java.util.List;
 
 import by.epamtc.melnikov.elibrary.bean.Book;
+import by.epamtc.melnikov.elibrary.constant.ResponseConstants;
 import by.epamtc.melnikov.elibrary.constant.SplitConstants;
 import by.epamtc.melnikov.elibrary.controller.command.Command;
 import by.epamtc.melnikov.elibrary.controller.presentation.UserActionViewer;
@@ -25,13 +26,14 @@ public class FindBooksByTitleAndAuthor implements Command {
 		
 		List<Book> result = null;
 		
+		String response;
+		
 		try {
 			result = storageService.findBooks(title, author);
+			response = UserActionViewer.findBooksAnswer(result);
 		} catch (ServiceException e) {
-			//Обработать
+			response = ResponseConstants.FIND_FAILED;
 		}
-		
-		String response = UserActionViewer.findBooksAnswer(result);
 		
 		return response;
 		

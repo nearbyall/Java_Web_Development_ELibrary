@@ -3,6 +3,7 @@ package by.epamtc.melnikov.elibrary.controller.command.impl;
 import by.epamtc.melnikov.elibrary.bean.Book;
 import by.epamtc.melnikov.elibrary.bean.builder.BookBuilder;
 import by.epamtc.melnikov.elibrary.bean.type.BookSizeType;
+import by.epamtc.melnikov.elibrary.constant.ResponseConstants;
 import by.epamtc.melnikov.elibrary.constant.SplitConstants;
 import by.epamtc.melnikov.elibrary.controller.command.Command;
 import by.epamtc.melnikov.elibrary.service.ServiceProvider;
@@ -31,13 +32,16 @@ public class CorrectNote implements Command {
 				.withBookSizeType(BookSizeType.valueOf(data[6]))
 				.build();
 				
+		String response;
+		
 		try {
 			storageService.correctBook(correctBook, uncorrectBook);
+			response = ResponseConstants.CORRECT_SUCCESS;
 		} catch (ServiceException e) {
-			//Обработать
+			response = ResponseConstants.CORRECT_FAILED;
 		}
 		
-		return "Book was corrected";
+		return response;
 		
 	}
 
