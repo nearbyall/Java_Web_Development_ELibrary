@@ -26,4 +26,6 @@ public final class ResponseConstants {
 	
 	public final static String CORRECT_FAILED = "Book has not been corrected";
 	
+	public final static String SHOW_BOOKS_FAILED = "Books has not been showed";
+	
 }
