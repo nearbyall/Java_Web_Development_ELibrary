@@ -5,15 +5,17 @@ import by.epamtc.melnikov.elibrary.dao.impl.TXTUserDAOImpl;
 
 public final class DAOProvider {
 
-	private static final DAOProvider instance = new DAOProvider();
-	
 	private StorageDAO storageDAO = new TXTStorageDAOImpl();
 	private UserDAO userDAO = new TXTUserDAOImpl();
 	
 	private DAOProvider() {}
 	
+	private static class DAOProviderHolder {
+		private final static DAOProvider instance = new DAOProvider();
+	}
+	
 	public static DAOProvider getInstantce() {
-		return instance;
+		return DAOProviderHolder.instance;
 	}
 
 	public StorageDAO getStorageDAO() {
