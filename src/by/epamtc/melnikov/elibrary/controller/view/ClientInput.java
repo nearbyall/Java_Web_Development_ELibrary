@@ -1,7 +1,6 @@
 package by.epamtc.melnikov.elibrary.controller.view;
 
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 public class ClientInput {
 
@@ -46,37 +45,13 @@ public class ClientInput {
 		
 	}
 	
-	public static int enterUserMenuChoise() {
-		
+	public static int enterChoise(int left, int right) {
+			
 		Integer value = null;
 		
 		do {
 			value = enterInteger();
-		} while (value < 0 || value > 3);
-		
-		return value;
-		
-	}
-	
-	public static int enterAdminMenuChoise() {
-		
-		Integer value = null;
-		
-		do {
-			value = enterInteger();
-		} while (value < 0 || value > 7);
-		
-		return value;
-		
-	}
-	
-	public static int enterAuthorizationMenuChoise() {
-		
-		Integer value = null;
-		
-		do {
-			value = enterInteger();
-		} while (value < 0 || value > 1);
+		} while (value < left || value > right);
 		
 		return value;
 		

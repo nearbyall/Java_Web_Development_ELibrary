@@ -38,7 +38,6 @@ public final class CommandProvider {
 			commandName = CommandName.valueOf(name);
 			command = repository.get(commandName);
 		} catch (NullPointerException | IllegalArgumentException e) {
-			//write log
 			command = repository.get(CommandName.WRONG_REQUEST);
 		}
 		

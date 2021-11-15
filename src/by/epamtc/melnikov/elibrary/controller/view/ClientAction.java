@@ -25,10 +25,10 @@ public final class ClientAction {
 			int option = 0;
 			
 			if (userType == UserType.ADMIN) {
-				option = ClientInput.enterAdminMenuChoise();
+				option = ClientInput.enterChoise(0, 7);
 				adminOptionProcessing(option);
 			} else {
-				option = ClientInput.enterUserMenuChoise();
+				option = ClientInput.enterChoise(0, 3);
 				userOptionProcessing(option);
 			}
 			
